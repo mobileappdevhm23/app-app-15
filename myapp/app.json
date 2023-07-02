@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "expo-notifications": {
+      "icon": "./assets/notificationIcon.png",
+      "color": "#FF0000",
+      "androidMode": "collapse",
+      "androidCollapsedTitle": "Neue Benachrichtigung"
     }
   }
 }

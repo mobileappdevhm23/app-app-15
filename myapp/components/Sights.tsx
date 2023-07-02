@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleSheet, View, Button, TouchableOpacity, Modal } from 'react-native';
 import Score from '../components/memoryGame/Score';
 import Card from '../components/memoryGame/Card';
+import { sendNotification } from './notification';
 
 const images = [
   require('../assets/sights/BmwWelt.jpg'),
@@ -189,7 +190,7 @@ export default class Sights extends React.Component<{}, SightsState> {
       }
 
       if (selected_pairs.length === images.length) {
-        // All matches found
+        sendNotification();
       }
 
       this.setState({

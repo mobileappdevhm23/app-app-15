@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { Text, StyleSheet, View, Button, TouchableOpacity, Modal } from 'react-native';
 import Score from '../components/memoryGame/Score';
 import Card from '../components/memoryGame/Card';
+import { sendNotification } from './notification';
 
 const images = [
   require('../assets/history/Agreement.jpg'),
@@ -193,7 +194,7 @@ export default class History extends React.Component<{}, SightsState> {
       }
 
       if (selected_pairs.length === images.length) {
-        // All matches found
+        sendNotification();
       }
 
       this.setState({
