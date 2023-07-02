@@ -4,10 +4,8 @@
     "slug": "myapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,18 +17,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ilaydaa38.myapp"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "myapp/assets/Closed.jpg"
     },
     "expo-notifications": {
-      "icon": "./assets/notificationIcon.png",
       "color": "#FF0000",
       "androidMode": "collapse",
       "androidCollapsedTitle": "Neue Benachrichtigung"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e98edcea-5edf-48b5-ac6f-c77fc383648e"
+      }
     }
   }
 }
