@@ -1,19 +1,22 @@
-import React from 'react';
-import { Text, StyleSheet, View, Button, TouchableOpacity, Modal } from 'react-native';
+import React, { ReactNode } from 'react';
+import { Text, StyleSheet, View, TouchableOpacity, Modal, Image } from 'react-native';
 import Score from '../components/memoryGame/Score';
 import Card from '../components/memoryGame/Card';
 import { sendNotification } from './notification';
 
 const images = [
-  require('../assets/sights/BmwWelt.jpg'),
-  require('../assets/sights/EnglischerGarten.jpg'),
-  require('../assets/sights/Frauenkirche.jpg'),
-  require('../assets/sights/Marienplatz.jpg'),
-  require('../assets/sights/Nymphenburg.jpg'),
-  require('../assets/sights/Residenz.jpg'),
+  require('../assets/food/Bier.jpg'),
+  require('../assets/food/Brezen.jpg'),
+  require('../assets/food/Kaiserschmarrn.jpg'),
+  require('../assets/food/Leberkaese.jpg'),
+  require('../assets/food/Semmelknoedel.jpg'),
+  require('../assets/food/Weißwurst.jpg'),
 ];
 
+
 interface CardType {
+  info: ReactNode;
+  index: any;
   src: any;
   name: string;
   color?: string;
@@ -38,6 +41,9 @@ class MatchScreen extends React.Component<{ onClose: () => void, cardInfo: CardT
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <Text style={styles.nameText}>{cardInfo.name}</Text>
+          <View style={styles.imageContainer}>
+            <Image source={cardInfo.src} style={styles.image} />
+          </View>
           <Text style={styles.infoText}>{cardInfo.info}</Text>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Continue</Text>
@@ -48,7 +54,7 @@ class MatchScreen extends React.Component<{ onClose: () => void, cardInfo: CardT
   }
 }
 
-export default class Sights extends React.Component<{}, SightsState> {
+export default class Food extends React.Component<{}, SightsState> {
   cards: CardType[];
 
   constructor(props: {}) {
@@ -62,19 +68,19 @@ export default class Sights extends React.Component<{}, SightsState> {
       info: 'Information about the sight...',
     }));
 
-    cards[1].info = 'One of the largest urban parks in the world, the English Garden offers a serene escape from the city. Visitors can relax by the streams and ponds, enjoy a picnic, or even surf on the artificial wave at the Eisbach.';
-    cards[3].info = 'Marienplatz is the central square in Munich and is home to the impressive New Town Hall with its famous Glockenspiel. Visitors can enjoy the lively atmosphere, admire the beautiful architecture, and witness the Glockenspiels performance.';
-    cards[0].info = 'Car enthusiasts will enjoy a visit to the BMW Museum, where the history of BMW automobiles and motorcycles is showcased. Adjacent to the museum is BMW Welt, a futuristic exhibition and delivery center where visitors can experience the brands latest innovations.';
-    cards[2].info = 'The iconic Cathedral of Our Blessed Lady, known as Frauenkirche, is a symbol of Munich. Its twin towers dominate the citys skyline, and visitors can climb to the top for panoramic views. The interior features beautiful Gothic architecture and stunning stained glass windows.';
-    cards[4].info = 'This stunning Baroque palace is surrounded by expansive gardens and was the summer residence of the Bavarian monarchs. Visitors can explore the opulent rooms, stroll through the picturesque gardens, and visit the nearby Marstallmuseum.';
-    cards[5].info = 'The Residenz is the former royal palace of the Bavarian monarchs and is one of Europes most magnificent palace complexes. Visitors can explore the opulent rooms, including the Antiquarium, the largest Renaissance hall north of the Alps, and the stunning Court Garden.';
+    cards[2].info = 'A sweet shredded pancake dusted with powdered sugar. Often served with applesauce.';
+    cards[1].info = 'Salty, baked dough in the shape of a large knot. They are a popular snack in Munich.';
+    cards[0].info = 'Munich is famous for its beer, and experiencing the local beer culture is a must-do. Enjoy a variety of traditional Bavarian beers such as Helles, Märzen, or Weissbier.';
+    cards[3].info = 'A hearty loaf made from a mixture of ground beef and pork. Sliced and commonly served as a snack or in sandwiches.';
+    cards[4].info = 'Bread dumplings made from stale rolls, eggs, and spices. They are a popular side dish in Bavarian cuisine.';
+    cards[5].info = 'A classic Bavarian sausage traditionally served with sweet mustard and pretzels for breakfast.';
 
-    cards[1].name = 'ENGLISH GARDEN:';
-    cards[3].name = 'MARIENPLATZ:';    
-    cards[0].name = 'BMW WELT/MUSEUM:';
-    cards[2].name = 'FRAUENKIRCHE:';
-    cards[4].name = 'NYMPHENBURG PALACE:';
-    cards[5].name = 'MUNICH RESIDENCE:';
+    cards[2].name = 'Kaiserschmarrn:';
+    cards[1].name = 'Pretzels (Brezen):';    
+    cards[0].name = 'Bavarian Beer:';
+    cards[3].name = 'Leberkäse:';
+    cards[4].name = 'Semmelknödel:';
+    cards[5].name = 'Weißwurst:';
 
     let clone = JSON.parse(JSON.stringify(cards));
 
@@ -165,6 +171,8 @@ export default class Sights extends React.Component<{}, SightsState> {
       current_selection.push({
         index: index,
         name: cards[index].name,
+        info: undefined,
+        src: undefined
       });
 
       if (current_selection.length === 2) {
@@ -331,5 +339,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: '900',
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    margin: 10,
   },
 });

@@ -1,12 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Constants from 'expo-constants';
-import { NavigationContainer } from '@react-navigation/native';
-import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
-import sights from './Sights';
-import food from './Food';
-import history from './History';
-import monsterStory from './stories/monsterStory';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type RootStackParamList = {
   Home: undefined;
@@ -57,11 +52,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
     backgroundColor: 'white',
-    marginTop: 20,
   },
   banner: {
     width: 300,
     height: 300,
+    marginTop: 20,
   },
   bannerContainer: {
     justifyContent: 'center',

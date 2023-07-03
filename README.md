@@ -10,7 +10,7 @@
 - Munichs most popular historical events
 
 <p align="center">
-  <img src="myapp/assets/Screens.png" alt="MemoryGame Logo" width="900">
+  <img src="MunichMemory/assets/Screens.png" alt="MemoryGame Logo" width="900">
 </p>
 
 ## 📦 Getting started

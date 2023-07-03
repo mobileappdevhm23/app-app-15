@@ -1,18 +1,17 @@
 import React, { ReactNode } from 'react';
-import { Text, StyleSheet, View, Button, TouchableOpacity, Modal } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Modal, Image } from 'react-native';
 import Score from '../components/memoryGame/Score';
 import Card from '../components/memoryGame/Card';
 import { sendNotification } from './notification';
 
 const images = [
-  require('../assets/food/Bier.jpg'),
-  require('../assets/food/Brezen.jpg'),
-  require('../assets/food/Kaiserschmarrn.jpg'),
-  require('../assets/food/Leberkaese.jpg'),
-  require('../assets/food/Semmelknoedel.jpg'),
-  require('../assets/food/Weißwurst.jpg'),
+  require('../assets/history/Agreement.jpg'),
+  require('../assets/history/Dachau.jpg'),
+  require('../assets/history/Founding.jpg'),
+  require('../assets/history/Oktoberfest.jpg'),
+  require('../assets/history/Olympics.jpg'),
+  require('../assets/history/Putsch.jpg'),
 ];
-
 
 interface CardType {
   info: ReactNode;
@@ -41,6 +40,9 @@ class MatchScreen extends React.Component<{ onClose: () => void, cardInfo: CardT
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <Text style={styles.nameText}>{cardInfo.name}</Text>
+          <View style={styles.imageContainer}>
+            <Image source={cardInfo.src} style={styles.image} />
+          </View>
           <Text style={styles.infoText}>{cardInfo.info}</Text>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Continue</Text>
@@ -51,7 +53,7 @@ class MatchScreen extends React.Component<{ onClose: () => void, cardInfo: CardT
   }
 }
 
-export default class Food extends React.Component<{}, SightsState> {
+export default class History extends React.Component<{}, SightsState> {
   cards: CardType[];
 
   constructor(props: {}) {
@@ -65,19 +67,19 @@ export default class Food extends React.Component<{}, SightsState> {
       info: 'Information about the sight...',
     }));
 
-    cards[2].info = 'A sweet shredded pancake dusted with powdered sugar. Often served with applesauce.';
-    cards[1].info = 'Salty, baked dough in the shape of a large knot. They are a popular snack in Munich.';
-    cards[0].info = 'Munich is famous for its beer, and experiencing the local beer culture is a must-do. Enjoy a variety of traditional Bavarian beers such as Helles, Märzen, or Weissbier.';
-    cards[3].info = 'A hearty loaf made from a mixture of ground beef and pork. Sliced and commonly served as a snack or in sandwiches.';
-    cards[4].info = 'Bread dumplings made from stale rolls, eggs, and spices. They are a popular side dish in Bavarian cuisine.';
-    cards[5].info = 'A classic Bavarian sausage traditionally served with sweet mustard and pretzels for breakfast.';
+    cards[3].info = "Oktoberfest is the world's largest folk festival and has been held annually in Munich since 1810. It was originally celebrated to honor the wedding of Crown Prince Ludwig (later King Ludwig I) and Princess Therese of Saxony-Hildburghausen.";
+    cards[2].info = 'Munich was officially founded as a city in 1158 when Duke Henry the Lion built a bridge over the River Isar. Over time, the city grew to become a political, cultural, and economic center in Bavaria.';
+    cards[4].info = 'Munich hosted the XX Olympic Summer Games in 1972. The event was overshadowed by the hostage-taking and murder of Israeli athletes by Palestinian terrorists, an incident known as the "Munich Massacre."';
+    cards[0].info = 'The Munich Agreement was signed in 1938, symbolizing the agreement of Britain and France to appease Nazi Germany by allowing its annexation of the Sudetenland region of Czechoslovakia. This event is often seen as a symbol of the failure of the policy of appeasement towards Hitler.';
+    cards[5].info = "In 1923, Adolf Hitler led a failed coup against the Bavarian government. The coup attempt, known as the Beer Hall Putsch, marked a significant turning point in the early rise of the National Socialist German Workers' Party (NSDAP).";
+    cards[1].info = 'Dachau Concentration Camp near Munich was the first Nazi camp, serving as a model during the Holocaust. It held thousands of prisoners, subjected to horrific conditions and forced labor. Its liberation in 1945 exposed Nazi atrocities, symbolizing the Holocaust.';
 
-    cards[2].name = 'Kaiserschmarrn:';
-    cards[1].name = 'Pretzels (Brezen):';    
-    cards[0].name = 'Bavarian Beer:';
-    cards[3].name = 'Leberkäse:';
-    cards[4].name = 'Semmelknödel:';
-    cards[5].name = 'Weißwurst:';
+    cards[3].name = 'Oktoberfest:';
+    cards[2].name = 'The Founding of Munich:';    
+    cards[4].name = '1972 Summer Olympics';
+    cards[0].name = 'Munich Agreement:';
+    cards[5].name = 'Beer Hall Putsch:';
+    cards[1].name = 'Dachau Concentration Camp:';
 
     let clone = JSON.parse(JSON.stringify(cards));
 
@@ -336,5 +338,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: '900',
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    margin: 10,
   },
 });

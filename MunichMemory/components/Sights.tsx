@@ -1,21 +1,21 @@
 import React, { ReactNode } from 'react';
-import { Text, StyleSheet, View, Button, TouchableOpacity, Modal } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, Modal, Image } from 'react-native';
 import Score from '../components/memoryGame/Score';
 import Card from '../components/memoryGame/Card';
 import { sendNotification } from './notification';
 
 const images = [
-  require('../assets/history/Agreement.jpg'),
-  require('../assets/history/Dachau.jpg'),
-  require('../assets/history/Founding.jpg'),
-  require('../assets/history/Oktoberfest.jpg'),
-  require('../assets/history/Olympics.jpg'),
-  require('../assets/history/Putsch.jpg'),
+  require('../assets/sights/BmwWelt.jpg'),
+  require('../assets/sights/EnglischerGarten.jpg'),
+  require('../assets/sights/Frauenkirche.jpg'),
+  require('../assets/sights/Marienplatz.jpg'),
+  require('../assets/sights/Nymphenburg.jpg'),
+  require('../assets/sights/Residenz.jpg'),
 ];
 
 interface CardType {
-  info: ReactNode;
   index: any;
+  info: ReactNode;
   src: any;
   name: string;
   color?: string;
@@ -40,6 +40,9 @@ class MatchScreen extends React.Component<{ onClose: () => void, cardInfo: CardT
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <Text style={styles.nameText}>{cardInfo.name}</Text>
+          <View style={styles.imageContainer}>
+            <Image source={cardInfo.src} style={styles.image} />
+          </View>
           <Text style={styles.infoText}>{cardInfo.info}</Text>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Continue</Text>
@@ -50,7 +53,7 @@ class MatchScreen extends React.Component<{ onClose: () => void, cardInfo: CardT
   }
 }
 
-export default class History extends React.Component<{}, SightsState> {
+export default class Sights extends React.Component<{}, SightsState> {
   cards: CardType[];
 
   constructor(props: {}) {
@@ -64,19 +67,19 @@ export default class History extends React.Component<{}, SightsState> {
       info: 'Information about the sight...',
     }));
 
-    cards[3].info = "Oktoberfest is the world's largest folk festival and has been held annually in Munich since 1810. It was originally celebrated to honor the wedding of Crown Prince Ludwig (later King Ludwig I) and Princess Therese of Saxony-Hildburghausen.";
-    cards[2].info = 'Munich was officially founded as a city in 1158 when Duke Henry the Lion built a bridge over the River Isar. Over time, the city grew to become a political, cultural, and economic center in Bavaria.';
-    cards[4].info = 'Munich hosted the XX Olympic Summer Games in 1972. The event was overshadowed by the hostage-taking and murder of Israeli athletes by Palestinian terrorists, an incident known as the "Munich Massacre."';
-    cards[0].info = 'The Munich Agreement was signed in 1938, symbolizing the agreement of Britain and France to appease Nazi Germany by allowing its annexation of the Sudetenland region of Czechoslovakia. This event is often seen as a symbol of the failure of the policy of appeasement towards Hitler.';
-    cards[5].info = "In 1923, Adolf Hitler led a failed coup against the Bavarian government. The coup attempt, known as the Beer Hall Putsch, marked a significant turning point in the early rise of the National Socialist German Workers' Party (NSDAP).";
-    cards[1].info = 'Dachau Concentration Camp near Munich was the first Nazi camp, serving as a model during the Holocaust. It held thousands of prisoners, subjected to horrific conditions and forced labor. Its liberation in 1945 exposed Nazi atrocities, symbolizing the Holocaust.';
+    cards[1].info = 'One of the largest urban parks in the world, the English Garden offers a serene escape from the city. Visitors can relax by the streams and ponds, enjoy a picnic, or even surf on the artificial wave at the Eisbach.';
+    cards[3].info = 'Marienplatz is the central square in Munich and is home to the impressive New Town Hall with its famous Glockenspiel. Visitors can enjoy the lively atmosphere, admire the beautiful architecture, and witness the Glockenspiels performance.';
+    cards[0].info = 'Car enthusiasts will enjoy a visit to the BMW Museum, where the history of BMW automobiles and motorcycles is showcased. Adjacent to the museum is BMW Welt, a futuristic exhibition and delivery center where visitors can experience the brands latest innovations.';
+    cards[2].info = 'The iconic Cathedral of Our Blessed Lady, known as Frauenkirche, is a symbol of Munich. Its twin towers dominate the citys skyline, and visitors can climb to the top for panoramic views. The interior features beautiful Gothic architecture and stunning stained glass windows.';
+    cards[4].info = 'This stunning Baroque palace is surrounded by expansive gardens and was the summer residence of the Bavarian monarchs. Visitors can explore the opulent rooms, stroll through the picturesque gardens, and visit the nearby Marstallmuseum.';
+    cards[5].info = 'The Residenz is the former royal palace of the Bavarian monarchs and is one of Europes most magnificent palace complexes. Visitors can explore the opulent rooms, including the Antiquarium, the largest Renaissance hall north of the Alps, and the stunning Court Garden.';
 
-    cards[3].name = 'Oktoberfest:';
-    cards[2].name = 'The Founding of Munich:';    
-    cards[4].name = '1972 Summer Olympics';
-    cards[0].name = 'Munich Agreement:';
-    cards[5].name = 'Beer Hall Putsch:';
-    cards[1].name = 'Dachau Concentration Camp:';
+    cards[1].name = 'ENGLISH GARDEN:';
+    cards[3].name = 'MARIENPLATZ:';    
+    cards[0].name = 'BMW WELT/MUSEUM:';
+    cards[2].name = 'FRAUENKIRCHE:';
+    cards[4].name = 'NYMPHENBURG PALACE:';
+    cards[5].name = 'MUNICH RESIDENCE:';
 
     let clone = JSON.parse(JSON.stringify(cards));
 
@@ -335,5 +338,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: '900',
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    margin: 10,
   },
 });

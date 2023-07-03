@@ -1,11 +1,13 @@
 {
   "expo": {
-    "name": "myapp",
-    "slug": "myapp",
+    "name": "MunichMemory",
+    "slug": "MunichMemory",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/playstore.png",
     "userInterfaceStyle": "light",
     "splash": {
+      "image": "./assets/playstore.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +19,13 @@
     },
     "android": {
       "adaptiveIcon": {
+        "foregroundImage": "./assets/playstore.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ilaydaa38.myapp"
+      "package": "com.ilaydaa38.MunichMemory"
     },
     "web": {
-      "favicon": "myapp/assets/Closed.jpg"
+      "favicon": "./assets/playstore.png"
     },
     "expo-notifications": {
       "color": "#FF0000",
@@ -31,7 +34,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "e98edcea-5edf-48b5-ac6f-c77fc383648e"
+        "projectId": "62502f3d-d09d-49aa-9b11-ee84179fb7a4"
       }
     }
   }

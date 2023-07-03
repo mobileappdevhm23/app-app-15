@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
-export default function Card({ src, name, color, is_open, clickCard }) {
+export default function Card({ src, color, is_open, clickCard }) {
   return (
     <TouchableOpacity onPress={clickCard}>
       <View style={[styles.card, { backgroundColor: color }]}>
         {is_open ? (
           <Image source={src} style={styles.image} />
         ) : (
-          <Image source={require('myapp/assets/Closed.jpg')} style={styles.closedImage} />
+          <Image source={require('MunichMemory/assets/Closed.jpg')} style={styles.closedImage} />
         )}
       </View>
     </TouchableOpacity>
