@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="center">Munich Memory Game</h1>
-  <p align="center">Explore the beauty of Munich in this memory game! 
-    Match the pairs, learn interesting facts, and have fun exploring the city!.</p>
+  <p align="center">Discover the beauty of Munich in this memory game! 
+    Match the pairs, learn interesting facts, and have fun exploring the city's landmarks, food and history!</p>
 </p>
 
 
